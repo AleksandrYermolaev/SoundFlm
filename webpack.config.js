@@ -15,7 +15,10 @@ module.exports = {
     open: true,
     hot: true,
   },
-  entry: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
+  entry: {
+    index: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
+    welcome: ['@babel/polyfill', path.resolve(__dirname, 'src', 'welcome.js')],
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
@@ -25,10 +28,14 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'index.html'),
+      inject: true,
+      chunks: ['index'],
     }),
     new HtmlWebpackPlugin({
       filename: 'welcome.html',
       template: path.resolve(__dirname, 'src', 'welcome.html'),
+      inject: true,
+      chunks: ['welcome'],
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',

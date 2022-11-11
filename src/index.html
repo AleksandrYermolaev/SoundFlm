@@ -1,12 +1,44 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SongBird</title>
-</head>
-<body>
-  <h1>Hello</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SongBird</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <img src="img/logo.svg" alt="SongBird logo" class="header__logo" />
+        <ul class="header__pages">
+          <li class="header__pages-main active">Главная</li>
+          <li class="header__pages-quize">Викторина</li>
+        </ul>
+      </header>
+      <main class="main">
+        <img src="img/orange-bird.png" alt="orange bird" class="orange-bird" />
+        <img src="img/green-bird.png" alt="green bird" class="green-bird" />
+        <h1 class="main__caption">
+          SongBird - это викторина, в которой вам предстоит угадывать голоса
+          птиц.
+        </h1>
+        <p class="main__rules">
+          Викторина проходит в 6 раундов, в каждом из которых вас ожидают разные
+          категории птиц. В случае правильного ответа вы получаете 5 баллов за
+          раунд, за каждую неверную попытку в раунде отнимается один балл.
+          Максимальный балл за викторину - 30. Удачи!
+        </p>
+        <button class="main__button">Начать викторину</button>
+      </main>
+      <footer class="footer">
+        <a href="https://github.com/AleksandrYermolaev" class="github-link">
+          AleksandrYermolaev
+        </a>
+        <div class="year">2022</div>
+        <a href="https://rs.school/js/" class="rs-link">
+          <img src="img/rs_school_js.svg" alt="Rolling Scopes School logo" />
+        </a>
+      </footer>
+    </div>
+  </body>
 </html>

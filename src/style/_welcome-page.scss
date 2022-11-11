@@ -1,0 +1,163 @@
+.wrapper {
+  box-sizing: border-box;
+  padding: 25px;
+  width: 100%;
+  min-height: 100vh;
+  max-width: 1920px;
+  background-color: $color-back;
+  display: flex;
+  flex-direction: column;
+  .header {
+    flex: 0 0 auto;
+    margin: 0;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 25px;
+
+    &__logo {
+      max-width: 30%;
+    }
+
+    &__pages {
+      max-width: 40%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style-type: none;
+      @include go-adaptive('gap', 80, 20);
+      color: white;
+      font-family: Panton;
+      font-weight: 700;
+      @include go-adaptive('font-size', 50, 14);
+
+      &-main,
+      &-quize {
+        @include button;
+
+        &:hover {
+          color: $color-button;
+          background-color: white;
+        }
+      }
+
+      .active {
+        background-color: $color-button-active;
+
+        &:hover {
+          color: $color-button;
+          background-color: white;
+        }
+      }
+    }
+  }
+
+  .main {
+    flex: 1 0 auto;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .orange-bird {
+      position: absolute;
+      @include go-adaptive('width', 400, 100);
+      top: -10%;
+      left: 10%;
+    }
+
+    .green-bird {
+      position: absolute;
+      @include go-adaptive('width', 500, 100);
+      top: 40%;
+      right: 10%;
+    }
+
+    &__caption {
+      margin: 0;
+      max-width: 30%;
+      color: white;
+      font-family: Panton;
+      font-weight: 800;
+      @include go-adaptive('font-size', 50, 14);
+      //margin-top: 3%;
+      border-bottom: 3px solid $color-button;
+      padding-bottom: 10px;
+    }
+
+    &__rules {
+      margin-top: 20px;
+      padding: 0;
+      max-width: 30%;
+      color: white;
+      font-family: Panton;
+      font-weight: 600;
+      @include go-adaptive('font-size', 30, 10);
+    }
+
+    &__button {
+      @include button;
+      position: relative;
+      top: 0;
+      color: white;
+      font-family: Panton;
+      font-weight: 700;
+      @include go-adaptive('font-size', 50, 14);
+      @include go-adaptive('width', 500, 100);
+      border: none;
+      box-shadow: 0 10px 0px $color-shadow;
+      transition: $trans-set;
+      
+      &:hover {
+        box-shadow: 0 2px 0px $color-shadow;
+        top: 8px;
+      }
+    }
+  }
+
+  .footer {
+    flex: 0 0 auto;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include go-adaptive('gap', 200, 70);
+    .github-link,
+    .year {
+      position: relative;
+      color: white;
+      text-decoration: none;
+      font-family: Panton;
+      font-weight: 400;
+      @include go-adaptive('font-size', 20, 8);
+    }
+
+    .github-link {
+      transition: $trans-set;
+
+      &:hover {
+        color: $color-button;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        background: url('img/github.png') center no-repeat;
+        background-size: 40px 40px;
+        width: 40px;
+        height: 40px;
+        top: -10px;
+        left: -50px;
+        z-index: 2;
+      }
+    }
+
+    .rs-link {
+      width: 5%;
+    }
+  }
+}
