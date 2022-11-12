@@ -1,8 +1,11 @@
-$color-back: #222222;
-$color-module: #303030;
-$color-button: #056d53;
-$color-button-active: #07cc9b;
+$color-back-a: #1b192d9c;
+$color-back: #1b192d;
+$color-module: #444973;
+$color-button: #1997eb;
+$color-button-active: #7abae0;
 $color-shadow: #808080;
+$color-modal: #dfdfdff1;
+$color-text: #efeeeb;
 $color-wrong: #ff0000;
 $trans-set: all 0.5s ease;
 
@@ -16,13 +19,13 @@ $trans-set: all 0.5s ease;
 
 @mixin button {
   display: block;
-  @include go-adaptive('width', 320, 100);
-  @include go-adaptive('height', 80, 30);
+  @include go-adaptive('width', 250, 80);
+  @include go-adaptive('height', 50, 20);
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: $color-button;
-  border-radius: 10px;
+  @include go-adaptive('border-radius', 10, 5);
   transition: $trans-set;
   cursor: pointer;
 }

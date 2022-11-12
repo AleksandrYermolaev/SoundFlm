@@ -71,6 +71,13 @@ module.exports = {
         },
       },
       {
+        test: /\.mp3$/i,
+        loader: 'file-loader',
+        options: {
+          name: 'sounds/[name].[ext]',
+        },
+      },
+      {
         test: /\.(jpe?g|png|webp|gif|svg)$/i,
         use: {
           loader: 'image-webpack-loader',

@@ -4,39 +4,47 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SongBird</title>
+    <title>SoundFlm</title>
   </head>
   <body>
     <div class="wrapper">
+      <div class="modal hide">
+        <div class="modal__close">X</div>
+        <h2 class="modal__header">Правила</h2>
+        <p class="modal__body">
+          Викторина проходит в 6 раундов, в каждом из которых вас ожидают разные
+          жанры фильмов с нарастающей сложностью (по мнению автора). В случае
+          правильного ответа с первой попытки вы получаете 5 баллов за раунд, за
+          каждую неверную попытку в раунде отнимается один балл. Максимальный
+          балл за викторину - 30. Удачи!
+        </p>
+      </div>
       <header class="header">
-        <img src="img/logo.svg" alt="SongBird logo" class="header__logo" />
+        <div class="header__logo"><span class="word">Sound</span>Flm</div>
         <ul class="header__pages">
           <li class="header__pages-main active">Главная</li>
           <li class="header__pages-quize">Викторина</li>
+          <li class="header__pages-rules">Правила</li>
         </ul>
       </header>
       <main class="main">
-        <img src="img/orange-bird.png" alt="orange bird" class="orange-bird" />
-        <img src="img/green-bird.png" alt="green bird" class="green-bird" />
         <h1 class="main__caption">
-          SongBird - это викторина, в которой вам предстоит угадывать голоса
-          птиц.
+          SoundFlm - это викторина, в которой вам предстоит угадывать саундтреки
+          из фильмов.
         </h1>
-        <p class="main__rules">
-          Викторина проходит в 6 раундов, в каждом из которых вас ожидают разные
-          категории птиц. В случае правильного ответа вы получаете 5 баллов за
-          раунд, за каждую неверную попытку в раунде отнимается один балл.
-          Максимальный балл за викторину - 30. Удачи!
-        </p>
-        <button class="main__button">Начать викторину</button>
+        <button class="main__button">Поехали!</button>
       </main>
       <footer class="footer">
         <a href="https://github.com/AleksandrYermolaev" class="github-link">
-          AleksandrYermolaev
+          <img src="img/github.png" alt="github-logo" width="30" />
         </a>
         <div class="year">2022</div>
         <a href="https://rs.school/js/" class="rs-link">
-          <img src="img/rs_school_js.svg" alt="Rolling Scopes School logo" />
+          <img
+            src="img/rs_school_js.svg"
+            alt="Rolling Scopes School logo"
+            width="80"
+          />
         </a>
       </footer>
     </div>
