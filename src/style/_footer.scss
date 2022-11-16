@@ -1,0 +1,19 @@
+.footer {
+  flex: 0 0 auto;
+  width: 30%;
+  margin: 0 auto;
+  @include centrify;
+  gap: 30px;
+  @include go-adaptive('padding-left', 30, 10);
+  @include go-adaptive('padding-right', 30, 10);
+  @include go-adaptive('padding-bottom', 30, 10);
+  color: $color-text;
+
+  .github-link,
+  .year,
+  .rs-link {
+    flex: 0 0 30%;
+    display: flex;
+    justify-content: center;
+  }
+}

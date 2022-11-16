@@ -6,24 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SoundFlm</title>
   </head>
-  <body>
+  <body class="preload">
     <div class="wrapper">
       <div class="modal hide">
         <div class="modal__close">X</div>
         <h2 class="modal__header">Правила</h2>
         <p class="modal__body">
           Викторина проходит в 6 раундов, в каждом из которых вас ожидают разные
-          жанры фильмов с нарастающей сложностью (по мнению автора). В случае
-          правильного ответа с первой попытки вы получаете 5 баллов за раунд, за
-          каждую неверную попытку в раунде отнимается один балл. Максимальный
-          балл за викторину - 30. Удачи!
+          жанры фильмов. В случае правильного ответа с первой попытки вы
+          получаете 5 баллов за раунд, за каждую неверную попытку в раунде
+          отнимается один балл. Максимальный балл за викторину - 30. Удачи!
         </p>
       </div>
       <header class="header">
         <div class="header__logo"><span class="word">Sound</span>Flm</div>
         <ul class="header__pages">
           <li class="header__pages-main active">Главная</li>
-          <li class="header__pages-quize">Викторина</li>
+          <li class="header__pages-quize">
+            <a href="/quiz.html" class="header__pages-main-link">Викторина</a>
+          </li>
           <li class="header__pages-rules">Правила</li>
         </ul>
       </header>
@@ -32,7 +33,9 @@
           SoundFlm - это викторина, в которой вам предстоит угадывать саундтреки
           из фильмов.
         </h1>
-        <button class="main__button">Поехали!</button>
+        <button class="main__button">
+          <a href="/quiz.html" class="main__button-link">Поехали!</a>
+        </button>
       </main>
       <footer class="footer">
         <a href="https://github.com/AleksandrYermolaev" class="github-link">

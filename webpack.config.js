@@ -17,13 +17,13 @@ module.exports = {
   },
   entry: {
     index: ['@babel/polyfill', path.resolve(__dirname, 'src', 'index.js')],
-    welcome: ['@babel/polyfill', path.resolve(__dirname, 'src', 'welcome.js')],
+    quiz: ['@babel/polyfill', path.resolve(__dirname, 'src', 'quiz.js')],
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
     filename: '[name].[contenthash].js',
-    assetModuleFilename: 'assets/[name].[contenthash][ext][query]',
+    // assetModuleFilename: 'assets/[name].[contenthash][ext][query]',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -32,10 +32,10 @@ module.exports = {
       chunks: ['index'],
     }),
     new HtmlWebpackPlugin({
-      filename: 'welcome.html',
-      template: path.resolve(__dirname, 'src', 'welcome.html'),
+      filename: 'quiz.html',
+      template: path.resolve(__dirname, 'src', 'quiz.html'),
       inject: true,
-      chunks: ['welcome'],
+      chunks: ['quiz'],
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
@@ -64,7 +64,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff|woff2|ttf)$/i,
+        test: /\.(woff|woff2|ttf|eot)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'fonts/[name][ext]',
@@ -72,10 +72,14 @@ module.exports = {
       },
       {
         test: /\.mp3$/i,
-        loader: 'file-loader',
-        options: {
-          name: 'sounds/[name].[ext]',
+        type: 'asset/resource',
+        generator: {
+          filename: 'sounds/[name][ext]',
         },
+        // loader: 'file-loader',
+        // options: {
+        //   name: 'sounds/[name].[ext]',
+        // },
       },
       {
         test: /\.(jpe?g|png|webp|gif|svg)$/i,
@@ -103,6 +107,9 @@ module.exports = {
           },
         },
         type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext]',
+        },
       },
       {
         test: /\.m?js$/,

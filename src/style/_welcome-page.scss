@@ -1,3 +1,7 @@
+.preload * {
+  transition: none !important;
+}
+
 .wrapper {
   background-image: 
   linear-gradient(to top, $color-back, $color-back-a),
@@ -9,99 +13,6 @@
   flex-direction: column;
   justify-content: space-between;
   font-family: Panton;
-
-  .modal {
-    position: absolute;
-    z-index: 10;
-    top: 30%;
-    left: calc(50% - (144px + 624 * ((100vw - 360px) / (1920 - 360)))/2);
-    @include go-adaptive('width', 768, 144);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    background-color: $color-modal;
-    border-radius: 5px;
-    padding: 10px 20px;
-    transition: $trans-set;
-
-    &__close {
-      position: absolute;
-      right: 2%;
-      cursor: pointer;
-    }
-
-    &__header {
-      margin: 0;
-      @include go-adaptive('font-size', 40, 15);
-    }
-
-    &__body {
-      text-align: justify;
-      font-weight: 500;
-      @include go-adaptive('font-size', 25, 10);
-    }
-  }
-
-  .hide {
-    overflow: hidden;
-    opacity: 0;
-  }
-
-  .header {
-    width: 100%;
-    flex: 0 0 auto;
-    @include go-adaptive('padding-top', 30, 10);
-    @include go-adaptive('padding-left', 30, 10);
-    @include go-adaptive('padding-right', 30, 10);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    color: $color-text;
-    
-    &__logo {
-      text-align: center;
-      flex: 0 0 40%;
-      font-weight: 800;
-      @include go-adaptive('font-size', 80, 30);
-
-      .word {
-        color: $color-button;
-      }
-    }
-
-    &__pages {
-      flex: 0 0 60%;
-      display: flex;
-      justify-content: space-around;
-      list-style-type: none;
-      font-weight: 600;
-      gap: 10px;
-      @include go-adaptive('font-size', 30, 10);
-
-      &-main,
-      &-quize,
-      &-rules {
-        @include button;
-
-        &:hover {
-          background-color: $color-button-active;
-          color: $color-text;
-        }
-      }
-    }
-
-    .active {
-      background-color: $color-text;
-      color: $color-button;
-
-      &:hover {
-        background-color: $color-button-active;
-        color: $color-text;
-      }
-    }
-  }
 
   .main {
     flex: 1 0 auto;
@@ -136,32 +47,15 @@
       position: relative;
       top: 0;
 
+      &-link {
+        text-decoration: none;
+        color: $color-text;
+      }
+
       &:hover {
         box-shadow: 0 0 0 $color-shadow;
         top: 5px;
       }
-    }
-  }
-
-  .footer {
-    flex: 0 0 auto;
-    width: 30%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    @include go-adaptive('padding-left', 30, 10);
-    @include go-adaptive('padding-right', 30, 10);
-    @include go-adaptive('padding-bottom', 30, 10);
-    color: $color-text;
-
-    .github-link,
-    .year,
-    .rs-link {
-      flex: 0 0 30%;
-      display: flex;
-      justify-content: center;
     }
   }
 }

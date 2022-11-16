@@ -1,0 +1,403 @@
+.preload * {
+  transition: none !important;
+}
+
+.wrapper {
+  background-image: 
+  linear-gradient(to top, $color-back, $color-back-a),
+  url('img/background.jpg');
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: Panton;
+
+  .main {
+    flex: 1 0 auto;
+    width: 90%;
+    margin: 20px auto;
+    display: grid;
+    grid-template: 
+      [start] "rounds rounds rounds rounds rounds rounds" 1fr [row2]
+      [row2] "question question question question options options" 7fr [row3]
+      [row3] "description description description description description nextround" 7fr [row-end] / 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+
+    .rounds {
+      grid-area: rounds;
+      border: 2px solid $color-button;
+      border-radius: 5px;
+      display: flex;
+      align-items: stretch;
+      color: $color-text;
+      @include go-adaptive('font-size', 30, 14);
+      background-color: $color-button;
+
+      &__number {
+        flex: 1 0 90%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        list-style-type: none;
+      }
+
+      &__item {
+        flex-grow: 1;
+        min-width: 100px;
+        @include centrify;
+        background-color: $color-button;
+        border-radius: 5px;
+      }
+
+      .current {
+        color: $color-button;
+        background-color: $color-text;
+      }
+
+      &__score {
+        flex: 1 0 10%;
+        background-color: $color-button-active;
+        @include centrify;
+        gap: 5px;
+        border-radius: 5px; 
+
+        &-count {
+          position: relative;
+          top: 2px;
+        }
+      }
+    }
+
+    .question,
+    .options,
+    .description {
+      background-color: $color-back-a;
+      border: 2px solid $color-text;
+      border-radius: 5px;
+    }
+
+    .question {
+      grid-area: question;
+      padding: 10px;
+      display: grid;
+      grid-template: 
+      [start] "poster movie-name movie-name movie-name" 1fr [row2]
+      [row2] "poster audio audio audio" 2fr [row3]
+      [row3] "poster audio audio audio" 2fr [row-end] / 1fr 1fr 1fr 1fr;
+      gap: 20px;
+      color: $color-text;
+
+      &__poster {
+        grid-area: poster;
+        @include go-adaptive('width', 250, 100);
+        height: 0;
+        @include go-adaptive('padding-bottom', 375, 150);
+        position: relative;
+        overflow: hidden;
+        &-image {
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+      }
+
+      &__name {
+        grid-area: movie-name;
+        align-self: center;
+        @include go-adaptive('font-size', 40, 14);
+        border-bottom: 1px solid $color-shadow;
+      }
+
+      .audio {
+        grid-area: audio;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        &__play {
+          position: relative;
+          display: flex;
+          gap: 10px;
+          
+          &-icon {
+            @include go-adaptive('font-size', 60, 14);
+            color: $color-button;
+            cursor: pointer;
+          }
+
+          &-time {
+            position: absolute;
+            top: 80%;
+            left: 10%;
+          }
+  
+          &-remain {
+            position: absolute;
+            top: 80%;
+            right: 0;
+          }
+
+          &-progress {
+            width: 100%;
+            height: 5px;
+            background-color: $color-text;
+            align-self: center;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            
+
+            &-bar {
+              background-color: $color-button;
+              height: 5px;
+            }
+          }
+        }
+
+        &__volume {
+          margin-top: 10px;
+          display: flex;
+          gap: 10px;
+          @include go-adaptive('font-size', 30, 10);
+
+          &-mute {
+            border: none;
+            background-color: transparent;
+            color: $color-button;
+            cursor: pointer;
+          }
+
+          &-progress {
+            height: 5px;
+            align-self: center;
+            cursor: pointer;
+            transition: $trans-set;
+          }
+        }
+
+        
+      }
+    }
+
+    .options {
+      grid-area: options;
+      
+      &__list {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        color: $color-text;
+        @include go-adaptive('font-size', 30, 14);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      &__item {
+        flex: 0 0 16.667%;
+        @include centrify;
+        justify-content: flex-start;
+        @include go-adaptive('padding-left', 40, 15);
+        border-bottom: 1px solid $color-shadow;
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $color-button;
+        }
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 10px;
+          @include go-adaptive('width', 15, 5);
+          @include go-adaptive('height', 15, 5);
+          border-radius: 50%;
+          background-color: $color-shadow;
+        }
+      }
+      .wrong {
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 10px;
+          @include go-adaptive('width', 15, 5);
+          @include go-adaptive('height', 15, 5);
+          border-radius: 50%;
+          background-color: $color-wrong;
+        }
+      }
+      .correct {
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 10px;
+          @include go-adaptive('width', 15, 5);
+          @include go-adaptive('height', 15, 5);
+          border-radius: 50%;
+          background-color: $color-correct;
+        }
+      }
+    }
+
+    .description {
+      grid-area: description;
+      padding: 10px;
+      @include go-adaptive('font-size', 30, 14);
+      color: $color-text;
+      position: relative;
+
+      .info {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+      }
+
+      display: grid;
+      grid-template: 
+      [start] "poster movie-name movie-name movie-name" 0.5fr [row2]
+      [row2] "poster name-eng name-eng name-eng" 0.5fr [row3]
+      [row3] "poster audio audio audio" 1fr [row4]
+      [row4] "poster audio audio audio" 1fr [row5] 
+      [row5] "poster desc desc desc" 2fr/ 1fr 1fr 1fr 1fr;
+      color: $color-text;
+
+      &__poster {
+        grid-area: poster;
+        @include go-adaptive('width', 250, 100);
+        height: 0;
+        @include go-adaptive('padding-bottom', 375, 150);
+        position: relative;
+        overflow: hidden;
+        &-image {
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+      }
+
+      &__name {
+        grid-area: movie-name;
+        @include go-adaptive('font-size', 30, 14);
+        border-bottom: 1px solid $color-shadow;
+      }
+
+      &__name-english {
+        padding: 5px 0;
+        grid-area: name-eng;
+        @include go-adaptive('font-size', 25, 14);
+        border-bottom: 1px solid $color-shadow;
+      }
+
+      .audio {
+        grid-area: audio;
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        gap: 20px;
+
+        &__play {
+          position: relative;
+          display: flex;
+          gap: 10px;
+          @include go-adaptive('font-size', 20, 10);
+          
+          &-icon {
+            @include go-adaptive('font-size', 60, 14);
+            color: $color-button;
+            cursor: pointer;
+          }
+
+          &-time {
+            position: absolute;
+            top: 80%;
+            left: 10%;
+          }
+  
+          &-remain {
+            position: absolute;
+            top: 80%;
+            right: 0;
+          }
+
+          &-progress {
+            width: 100%;
+            height: 5px;
+            background-color: $color-text;
+            align-self: center;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            
+
+            &-bar {
+              background-color: $color-button;
+              height: 5px;
+            }
+          }
+        }
+
+        &__volume {
+          display: flex;
+          gap: 10px;
+          @include go-adaptive('font-size', 30, 10);
+
+          &-mute {
+            border: none;
+            background-color: transparent;
+            color: $color-button;
+            cursor: pointer;
+          }
+
+          &-progress {
+            height: 5px;
+            align-self: center;
+            cursor: pointer;
+          }
+        }
+      }
+
+      &__text {
+        grid-area: desc;
+        margin-top: 10px;
+        @include go-adaptive('font-size', 20, 12);
+      }
+    }
+
+    .next-round {
+      grid-area: nextround;
+      background-color: $color-button-active;
+      border-radius: 5px;
+      color: $color-text;
+      @include centrify;
+      flex-wrap: wrap;
+      font-weight: 800;
+      text-align: center;
+      @include go-adaptive('font-size', 35, 20);
+      transition: $trans-set;
+      
+      &__icon {
+        flex: 0 0 100%;
+        @include go-adaptive('font-size', 100, 20);
+        align-self: flex-end;
+      }
+    }
+  }
+}

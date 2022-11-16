@@ -7,6 +7,7 @@ $color-shadow: #808080;
 $color-modal: #dfdfdff1;
 $color-text: #efeeeb;
 $color-wrong: #ff0000;
+$color-correct: #008000;
 $trans-set: all 0.5s ease;
 
 @mixin go-adaptive($property, $startSize, $minSize) {
@@ -28,4 +29,10 @@ $trans-set: all 0.5s ease;
   @include go-adaptive('border-radius', 10, 5);
   transition: $trans-set;
   cursor: pointer;
+}
+
+@mixin centrify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
