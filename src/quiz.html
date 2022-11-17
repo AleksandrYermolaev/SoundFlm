@@ -22,7 +22,9 @@
         <div class="header__logo"><span class="word">Sound</span>Flm</div>
         <ul class="header__pages">
           <li class="header__pages-main">
-            <a href="/" class="header__pages-main-link">Главная</a>
+            <a href="/dist/index.html" class="header__pages-main-link"
+              >Главная</a
+            >
           </li>
           <li class="header__pages-quize active">Викторина</li>
           <li class="header__pages-rules">Правила</li>
@@ -120,6 +122,21 @@
           />
         </a>
       </footer>
+      <section class="finish-game hide">
+        <div class="finish-game__congratulations">
+          <h1 class="finish-game__congratulations-caption">Поздравляем!</h1>
+          <p class="finish-game__congratulations-text">
+            Вы прошли викторину и набрали
+            <span class="finish-game__current-score"></span> из 30 возможных
+            баллов
+          </p>
+        </div>
+        <div class="finish-game__another-play">
+          <!-- <button class="finish-game__another-play-restart">
+            Сыграть еще раз!
+          </button> -->
+        </div>
+      </section>
     </div>
   </body>
 </html>

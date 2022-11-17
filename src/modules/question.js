@@ -1,3 +1,4 @@
+import { quizNumber } from '../quiz';
 import { moviesData, soundTraks } from './movies-data';
 export const playButton = document.querySelector('.audio__play-icon');
 export const muteButton = document.querySelector('#question-mute-button');
@@ -8,9 +9,8 @@ export const audio = document.querySelector('#question-audio');
 export const audioProgressBar = document.querySelector(
   '#question__audio-progress'
 );
-export const quizNumber = Math.round(5 * Math.random());
 
-export const loadAudio = (roundNumber) => {
+export const loadAudio = (roundNumber, quizNumber) => {
   const audioSrc = soundTraks[roundNumber][quizNumber];
   audio.src = audioSrc;
   audio.volume = 0.25;

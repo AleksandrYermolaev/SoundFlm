@@ -2,6 +2,16 @@
   transition: none !important;
 }
 
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-track {
+  background: $color-text;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: $color-button;
+}
+
 .wrapper {
   background-image: 
   linear-gradient(to top, $color-back, $color-back-a),
@@ -23,7 +33,7 @@
     grid-template: 
       [start] "rounds rounds rounds rounds rounds rounds" 1fr [row2]
       [row2] "question question question question options options" 7fr [row3]
-      [row3] "description description description description description nextround" 7fr [row-end] / 1fr 1fr 1fr 1fr 1fr 1fr;
+      [row3] "description description description description description nextround" 7.2fr [row-end] / 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 10px;
 
     .rounds {
@@ -392,6 +402,7 @@
       text-align: center;
       @include go-adaptive('font-size', 35, 20);
       transition: $trans-set;
+      pointer-events: none;
       
       &__icon {
         flex: 0 0 100%;
@@ -403,10 +414,60 @@
     .go-next {
       background-color: $color-button;
       cursor: pointer;
+      pointer-events: all;
 
       &:hover {
         background-color: $color-button-active;
       }
     }
+  }
+
+  .finish-game {
+    position: absolute;
+    top: 20%;
+    left: calc(50% - (288px + 1248 * ((100vw - 360px) / (1920 - 360)))/2);
+    width: 80%;
+    background-color: $color-back-a;
+    border: 2px solid $color-text;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    &__congratulations {
+      color: $color-text;
+      text-align: center;
+
+      &-caption {
+        font-weight: 800;
+        @include go-adaptive('font-size', 80, 20);
+      }
+
+      &-text {
+        font-weight: 600;
+        @include go-adaptive('font-size', 35, 15);
+      }
+    }
+
+    &__another-play-restart {
+      @include button;
+      @include go-adaptive('width', 350, 100);
+      border: none;
+      font-weight: 600;
+      @include go-adaptive('font-size', 30, 10);
+      color: $color-text;
+
+      &:hover {
+        background-color: $color-button-active;
+        color: $color-text;
+      }
+    }
+  }
+
+  .hide {
+    display: none;
   }
 }

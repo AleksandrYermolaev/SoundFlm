@@ -14,5 +14,6 @@ export function closeModal() {
   modal.classList.toggle('hide');
   body.style.overflow = 'visible';
   body.style.pointerEvents = 'all';
+
   modal.style.pointerEvents = 'none';
 }

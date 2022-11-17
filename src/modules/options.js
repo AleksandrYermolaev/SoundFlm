@@ -1,6 +1,6 @@
-import { roundNumber } from '../quiz';
+import { quizNumber, roundNumber } from '../quiz';
 import { moviesData, soundTraks } from './movies-data';
-import { pauseAudio, quizNumber } from './question';
+import { pauseAudio } from './question';
 import correctAnswerSound from '../sounds/correct-answer.mp3';
 import wrongAnswerSound from '../sounds/wrong-answer.mp3';
 import {
@@ -13,14 +13,12 @@ import {
   updateAudio,
 } from './description-audio';
 export const options = document.querySelectorAll('.options__item');
-let isGuess = false;
-let roundMaxScore = 6;
-
-export const showInfo = (event) => {
+let roundMaxScore = 5;
+export const showInfo = (event, isGuess) => {
   options.forEach((option, index, options) => {
     if (event.target === options[index]) {
       createDescriptonBlock(index);
-      checkIsTrue(event, index);
+      checkIsTrue(event, index, isGuess);
     }
   });
 };
@@ -93,7 +91,7 @@ const createDescriptonBlock = (target) => {
   });
 };
 
-const checkIsTrue = (event, index) => {
+const checkIsTrue = (event, index, isGuess) => {
   const scoreBlock = document.querySelector('.rounds__score-count');
   if (!isGuess) {
     if (quizNumber === index) {
@@ -106,7 +104,14 @@ const checkIsTrue = (event, index) => {
       showCorrectPoster(index);
       nextRoundActive();
       pauseAudio();
-      scoreBlock.textContent = roundMaxScore;
+      if (scoreBlock.textContent === 0) {
+        scoreBlock.textContent = roundMaxScore;
+      } else {
+        const prevScore = +scoreBlock.textContent;
+        roundMaxScore += prevScore;
+        scoreBlock.textContent = roundMaxScore;
+        roundMaxScore = 5;
+      }
     } else {
       event.target.classList.add('wrong');
       const sound = new Audio();
