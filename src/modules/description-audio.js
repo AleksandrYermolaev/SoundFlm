@@ -1,49 +1,40 @@
-import { moviesData, soundTraks } from './movies-data';
-export const playButton = document.querySelector('.audio__play-icon');
-export const muteButton = document.querySelector('#question-mute-button');
-export const volume = document.querySelector('#question__volume-progress');
+import { soundTraks } from './movies-data';
 let isPlay = false;
 let isMuted = false;
-export const audio = document.querySelector('#question-audio');
-export const audioProgressBar = document.querySelector(
-  '#question__audio-progress'
-);
-export const quizNumber = Math.round(5 * Math.random());
-
-export const loadAudio = (roundNumber) => {
+export const loadAudio = (audio, roundNumber, quizNumber) => {
   const audioSrc = soundTraks[roundNumber][quizNumber];
   audio.src = audioSrc;
   audio.volume = 0.25;
 };
 
-const playAudio = () => {
+const playAudio = (audio, playButton) => {
   audio.play();
   isPlay = true;
   playButton.classList.remove('fa-play-circle');
   playButton.classList.add('fa-pause-circle');
 };
 
-export const pauseAudio = () => {
+const pauseAudio = (audio, playButton) => {
   audio.pause();
   isPlay = false;
   playButton.classList.remove('fa-pause-circle');
   playButton.classList.add('fa-play-circle');
 };
 
-export const playPause = () => {
+export const playPause = (audio, playButton) => {
   if (isPlay) {
-    pauseAudio();
+    pauseAudio(audio, playButton);
   } else {
-    playAudio();
+    playAudio(audio, playButton);
   }
 };
 
-const updateAudioProgress = () => {
+const updateAudioProgress = (audio, audioProgressBar) => {
   const progressPercent = (audio.currentTime / audio.duration) * 100;
   audioProgressBar.value = progressPercent || 0;
 };
 
-const updateAudioTime = () => {
+const updateAudioTime = (audio, timePlayed, timeDuration) => {
   if (isPlay) {
     const alreadyPlaySecond = String(
       Math.round(audio.currentTime % 60)
@@ -65,30 +56,33 @@ const updateAudioTime = () => {
     if (isNaN(durationMinutes)) {
       durationMinutes = '00';
     }
-    const timePlayed = document.querySelector('#question__play-time');
-    const timeDuration = document.querySelector('#question__remain-time');
     timePlayed.textContent = `${alreadyPlayMinutes}:${alreadyPlaySecond}`;
     timeDuration.textContent = `${durationMinutes}:${durationSeconds}`;
   }
 };
 
-export const updateAudio = () => {
-  updateAudioProgress();
-  updateAudioTime();
+export const updateAudio = (
+  audio,
+  audioProgressBar,
+  timePlayed,
+  timeDuration
+) => {
+  updateAudioProgress(audio, audioProgressBar);
+  updateAudioTime(audio, timePlayed, timeDuration);
 };
 
-export function setAudioProgress() {
-  const audioProgress = (this.value / 100) * audio.duration;
+export function setAudioProgress(audio, audioProgressBar) {
+  const audioProgress = (audioProgressBar.value / 100) * audio.duration;
   audio.currentTime = audioProgress;
 }
 
-export function setVolume() {
-  const volumePercent = this.value / 100;
+export function setVolume(audio, volumeBar) {
+  const volumePercent = volumeBar.value / 100;
   audio.volume = volumePercent;
 }
 
-export const muteAudio = () => {
-  const muteIcon = document.querySelector('#question-mute-icon');
+export const muteAudio = (audio) => {
+  const muteIcon = document.querySelector('#description-mute-icon');
   if (isMuted) {
     audio.muted = false;
     muteIcon.classList.remove('fa-volume-off');
@@ -102,7 +96,7 @@ export const muteAudio = () => {
   }
 };
 
-export const endPlay = () => {
+export const endPlay = (playButton) => {
   playButton.classList.remove('fa-pause-circle');
   playButton.classList.add('fa-play-circle');
   isPlay = false;

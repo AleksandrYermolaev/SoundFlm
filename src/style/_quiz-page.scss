@@ -383,7 +383,7 @@
 
     .next-round {
       grid-area: nextround;
-      background-color: $color-button-active;
+      background-color: $color-shadow;
       border-radius: 5px;
       color: $color-text;
       @include centrify;
@@ -397,6 +397,15 @@
         flex: 0 0 100%;
         @include go-adaptive('font-size', 100, 20);
         align-self: flex-end;
+      }
+    }
+
+    .go-next {
+      background-color: $color-button;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $color-button-active;
       }
     }
   }
