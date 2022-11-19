@@ -36,6 +36,26 @@ body::-webkit-scrollbar-thumb {
       [row3] "description description description description description nextround" 7.2fr [row-end] / 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 10px;
 
+    @media (max-width: 900px) {
+      grid-template: 
+      [start] "rounds rounds rounds rounds rounds rounds" 0.3fr [row2]
+      [row2] "question question question question question question" 2fr [row3]
+      [row3] "options options options options options options" 2fr [row4]
+      [row4] "description description description description description description" 2.1fr [row5] 
+      [row5] "nextround nextround nextround nextround nextround nextround" 0.3fr / 1fr 1fr 1fr 1fr 1fr 1fr;
+      gap: 5px;
+    }
+
+    @media (max-width: 620px) {
+      grid-template: 
+      [start] "rounds rounds rounds rounds rounds rounds" 0.5fr [row2]
+      [row2] "question question question question question question" 1.4fr [row3]
+      [row3] "options options options options options options" 1.5fr [row4]
+      [row4] "description description description description description description" 2fr [row5] 
+      [row5] "nextround nextround nextround nextround nextround nextround" 0.3fr / 1fr 1fr 1fr 1fr 1fr 1fr;
+      gap: 5px;
+    }
+
     .rounds {
       grid-area: rounds;
       border: 2px solid $color-button;
@@ -137,6 +157,7 @@ body::-webkit-scrollbar-thumb {
           position: relative;
           display: flex;
           gap: 10px;
+          @include go-adaptive('font-size', 20, 10);
           
           &-icon {
             @include go-adaptive('font-size', 60, 14);
@@ -148,12 +169,20 @@ body::-webkit-scrollbar-thumb {
             position: absolute;
             top: 80%;
             left: 10%;
+
+            @media (max-width: 620px) {
+              top: 120%;
+             }
           }
   
           &-remain {
             position: absolute;
             top: 80%;
             right: 0;
+
+            @media (max-width: 620px) {
+              top: 120%;
+             }
           }
 
           &-progress {
@@ -164,11 +193,18 @@ body::-webkit-scrollbar-thumb {
             display: flex;
             align-items: center;
             cursor: pointer;
-            
+
+            @media (max-width: 900px) {
+              height: 3px;
+            }
 
             &-bar {
               background-color: $color-button;
               height: 5px;
+
+              @media (max-width: 900px) {
+                height: 3px;
+              }
             }
           }
         }
@@ -191,6 +227,10 @@ body::-webkit-scrollbar-thumb {
             align-self: center;
             cursor: pointer;
             transition: $trans-set;
+
+            @media (max-width: 900px) {
+              height: 3px;
+            }
           }
         }
 
@@ -235,6 +275,10 @@ body::-webkit-scrollbar-thumb {
           @include go-adaptive('height', 15, 5);
           border-radius: 50%;
           background-color: $color-shadow;
+
+          @media (max-width: 620px) {
+            left: 5px;
+          }
         }
       }
       .wrong {
@@ -247,6 +291,10 @@ body::-webkit-scrollbar-thumb {
           @include go-adaptive('height', 15, 5);
           border-radius: 50%;
           background-color: $color-wrong;
+
+          @media (max-width: 620px) {
+            left: 5px;
+          }
         }
       }
       .correct {
@@ -259,6 +307,10 @@ body::-webkit-scrollbar-thumb {
           @include go-adaptive('height', 15, 5);
           border-radius: 50%;
           background-color: $color-correct;
+
+          @media (max-width: 620px) {
+            left: 5px;
+          }
         }
       }
     }
@@ -284,6 +336,15 @@ body::-webkit-scrollbar-thumb {
       [row4] "poster audio audio audio" 1fr [row5] 
       [row5] "poster desc desc desc" 2fr/ 1fr 1fr 1fr 1fr;
       color: $color-text;
+      @media (max-width: 620px) {
+        grid-template: 
+        [start] "poster movie-name movie-name movie-name" 0.8fr [row2]
+        [row2] "poster name-eng name-eng name-eng" 0.8fr [row3]
+        [row3] "poster audio audio audio" 1fr [row4]
+        [row4] "poster audio audio audio" 1fr [row5] 
+        [row5] "desc desc desc desc" 1.7fr/ 1fr 1fr 1fr 1fr;
+        column-gap: 10px;
+      }
 
       &__poster {
         grid-area: poster;
@@ -307,13 +368,23 @@ body::-webkit-scrollbar-thumb {
         grid-area: movie-name;
         @include go-adaptive('font-size', 30, 14);
         border-bottom: 1px solid $color-shadow;
+
+        @media (max-width: 620px) {
+          display: flex;
+          align-items: center;
+        }
       }
 
       &__name-english {
         padding: 5px 0;
         grid-area: name-eng;
-        @include go-adaptive('font-size', 25, 14);
+        @include go-adaptive('font-size', 25, 10);
         border-bottom: 1px solid $color-shadow;
+
+        @media (max-width: 620px) {
+          display: flex;
+          align-items: center;
+        }
       }
 
       .audio {
@@ -322,6 +393,10 @@ body::-webkit-scrollbar-thumb {
         flex-direction: column;
         margin-top: 10px;
         gap: 20px;
+
+        @media (max-width: 620px) {
+          justify-content: center;
+        }
 
         &__play {
           position: relative;
@@ -339,12 +414,20 @@ body::-webkit-scrollbar-thumb {
             position: absolute;
             top: 80%;
             left: 10%;
+
+            @media (max-width: 620px) {
+             top: 120%;
+            }
           }
   
           &-remain {
             position: absolute;
             top: 80%;
             right: 0;
+
+            @media (max-width: 620px) {
+              top: 120%;
+             }
           }
 
           &-progress {
@@ -356,10 +439,17 @@ body::-webkit-scrollbar-thumb {
             align-items: center;
             cursor: pointer;
             
+            @media (max-width: 900px) {
+              height: 3px;
+            }
 
             &-bar {
               background-color: $color-button;
               height: 5px;
+
+              @media (max-width: 900px) {
+                height: 3px;
+              }
             }
           }
         }
@@ -380,6 +470,10 @@ body::-webkit-scrollbar-thumb {
             height: 5px;
             align-self: center;
             cursor: pointer;
+
+            @media (max-width: 900px) {
+              height: 3px;
+            }
           }
         }
       }
@@ -387,7 +481,11 @@ body::-webkit-scrollbar-thumb {
       &__text {
         grid-area: desc;
         margin-top: 10px;
-        @include go-adaptive('font-size', 20, 12);
+        @include go-adaptive('font-size', 20, 10);
+
+        @media (max-width: 620px) {
+          text-align: justify;
+        }
       }
     }
 
@@ -403,11 +501,24 @@ body::-webkit-scrollbar-thumb {
       @include go-adaptive('font-size', 35, 20);
       transition: $trans-set;
       pointer-events: none;
+
+      @media (max-width: 900px) {
+        justify-content: right;
+        flex-direction: row-reverse;
+        gap: 10px;
+      }
       
       &__icon {
         flex: 0 0 100%;
-        @include go-adaptive('font-size', 100, 20);
+        @include go-adaptive('font-size', 100, 18);
         align-self: flex-end;
+
+        @media (max-width: 900px) {
+          padding: 5px 0;
+          flex: 0 0 50%;
+          text-align: left;
+          align-self: center;
+        }
       }
     }
 
