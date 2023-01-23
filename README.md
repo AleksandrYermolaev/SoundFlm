@@ -1,1 +1,1 @@
-# SoundFlm is an app about suggests movies by its soundtracks.
+# SoundFlm is an quiz app about suggests movies by its soundtracks.
