@@ -1,0 +1,61 @@
+.preload * {
+  transition: none !important;
+}
+
+.wrapper {
+  background-image: 
+  linear-gradient(to top, $color-back, $color-back-a),
+  url('img/background.jpg');
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: Panton;
+
+  .main {
+    flex: 1 0 auto;
+    width: 100%;
+    @include go-adaptive('padding-left', 30, 10);
+    @include go-adaptive('padding-right', 30, 10);
+    margin-top: 7%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $color-text;
+
+    &__caption {
+      width: 70%;
+      text-align: center;
+      @include go-adaptive('font-size', 60, 25);
+    }
+
+    &__button {
+      display: block;
+      @include go-adaptive('width', 300, 100);
+      @include go-adaptive('height', 60, 30);
+      border: none;
+      font-weight: 600;
+      @include go-adaptive('font-size', 40, 18);
+      @include go-adaptive('border-radius', 10, 5);
+      color: $color-text;
+      background-color: $color-button;
+      box-shadow: 0 6px 0 $color-shadow;
+      cursor: pointer;
+      transition: $trans-set;
+      position: relative;
+      top: 0;
+
+      &-link {
+        text-decoration: none;
+        color: $color-text;
+      }
+
+      &:hover {
+        box-shadow: 0 0 0 $color-shadow;
+        top: 5px;
+      }
+    }
+  }
+}

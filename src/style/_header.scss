@@ -1,0 +1,56 @@
+.header {
+  width: 100%;
+  flex: 0 0 auto;
+  @include go-adaptive('padding-top', 30, 10);
+  @include go-adaptive('padding-left', 30, 10);
+  @include go-adaptive('padding-right', 30, 10);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  color: $color-text;
+  
+  &__logo {
+    text-align: center;
+    flex: 0 0 40%;
+    font-weight: 800;
+    @include go-adaptive('font-size', 80, 30);
+
+    .word {
+      color: $color-button;
+    }
+  }
+
+  &__pages {
+    padding: 0;
+    flex: 0 0 60%;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    font-weight: 600;
+    gap: 10px;
+    @include go-adaptive('font-size', 30, 10);
+
+    &-main,
+    &-quize,
+    &-rules {
+      @include button;
+
+      &-link {
+        text-decoration: none;
+        color: $color-text;
+      }
+
+      &:hover {
+        background-color: $color-button-active;
+        color: $color-text;
+      }
+    }
+  }
+
+  .active {
+    background-color: $color-text;
+    color: $color-button;
+    cursor: default;
+  }
+}

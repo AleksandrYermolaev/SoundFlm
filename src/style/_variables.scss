@@ -1,0 +1,38 @@
+$color-back-a: #1b192d9c;
+$color-back: #1b192d;
+$color-module: #444973;
+$color-button: #1997eb;
+$color-button-active: #7abae0;
+$color-shadow: #808080;
+$color-modal: #dfdfdff1;
+$color-text: #efeeeb;
+$color-wrong: #ff0000;
+$color-correct: #008000;
+$trans-set: all 0.5s ease;
+
+@mixin go-adaptive($property, $startSize, $minSize) {
+	$addSize: $startSize - $minSize;
+	#{$property}: $startSize + px;
+	@media (max-width: 1920px) {
+		#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 360px) / (1920 - 360)));
+	}
+}
+
+@mixin button {
+  display: block;
+  @include go-adaptive('width', 250, 80);
+  @include go-adaptive('height', 50, 20);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-button;
+  @include go-adaptive('border-radius', 10, 5);
+  transition: $trans-set;
+  cursor: pointer;
+}
+
+@mixin centrify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

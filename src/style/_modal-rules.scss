@@ -1,0 +1,38 @@
+.modal {
+  position: absolute;
+  z-index: 10;
+  top: 30%;
+  left: calc(50% - (144px + 624 * ((100vw - 360px) / (1920 - 360)))/2);
+  @include go-adaptive('width', 768, 144);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-modal;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: opacity 0.5s ease;
+
+  &__close {
+    position: absolute;
+    right: 2%;
+    cursor: pointer;
+  }
+
+  &__header {
+    margin: 0;
+    @include go-adaptive('font-size', 40, 15);
+  }
+
+  &__body {
+    text-align: justify;
+    font-weight: 500;
+    @include go-adaptive('font-size', 25, 10);
+  }
+}
+
+.hide {
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
